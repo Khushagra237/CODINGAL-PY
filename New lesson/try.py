@@ -12,4 +12,4 @@ else:
     print("No exception occurred.")
 finally:
     print("Execution completed.")
-    1
+    
