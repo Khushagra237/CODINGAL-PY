@@ -24,4 +24,7 @@ while True:
     else:
         print("Invalid choice. Please try again.")
     play_again = input("Do you want to play again? (yes/no): ")
+    if play_again.lower() != "yes":
+        print("Thanks for playing!")
+        break
            
