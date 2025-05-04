@@ -23,3 +23,5 @@ while True:
             print("Rock smashes scissors! You lose.")
     else:
         print("Invalid choice. Please try again.")
+    play_again = input("Do you want to play again? (yes/no): ")
+           
