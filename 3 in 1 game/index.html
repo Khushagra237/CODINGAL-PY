@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4-in-1 Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="gameSelectionPopup" class="popup">
+  <div class="popup-content">
+    <h2>Select a Game</h2>
+    <button onclick="selectGame('ludo')">Ludo</button>
+    <button onclick="selectGame('snakes')">Snakes & Ladders</button>
+    <button onclick="selectGame('ticTacToe')">Tic Tac Toe</button>
+  </div>
+</div>
+
+<div id="modeSelectionPopup" class="popup" style="display:none;">
+  <div class="popup-content">
+    <h2>Select Mode</h2>
+    <div id="modeButtons"></div>
+  </div>
+</div>
+
+<div id="nameInputPopup" class="popup" style="display:none;">
+  <div class="popup-content">
+    <h2>Enter Player Names</h2>
+    <div id="nameInputs"></div>
+    <button onclick="launchGame()">Start Game</button>
+  </div>
+</div>
+
+<div id="winnerPopup" class="popup" style="display:none;">
+  <div class="popup-content">
+    <h2 id="winnerMessage"></h2>
+    <button onclick="resetGame()">Back to Main Menu</button>
+  </div>
+</div>
+
+<div id="ludo" class="game-container">
+  <h1>Ludo Game</h1>
+  <div id="ludoBoard">
+    <canvas id="ludoCanvas" width="400" height="400"></canvas>
+    <button onclick="rollDiceLudo()">Roll Dice</button>
+    <div id="ludoPosition"></div>
+  </div>
+</div>
+
+<div id="snakes" class="game-container">
+  <h1>Snakes and Ladders Game</h1>
+  <canvas id="snakesCanvas" width="400" height="400"></canvas>
+  <button onclick="rollDiceSnakes()">Roll Dice</button>
+  <div id="snakesPosition"></div>
+</div>
+
+<div id="ticTacToe" class="game-container">
+  <h1>Tic Tac Toe Game</h1>
+  <div id="ticTacToeBoard" class="ttt-board"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
