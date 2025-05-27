@@ -2,8 +2,10 @@ country_code = {'India': '0091',
                     'Australia': '0061',
                     'Nepal': '00977'}
 
-print("Country code for India -")
-print(country_code.get('India', 'Not Found'))
-
-print("Country code for Japan-")
-print(country_code.get('Japan', 'Not Found'))
+country=input("enter coumtry name to get code: ")
+if country in country_code:
+    print(f"Country code for {country} is {country_code[country]}")
+else:
+    print("Country not found in the list")
+    exit()
+    
