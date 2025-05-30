@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coolest Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+    }
+
+    .calculator {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 20px;
+      width: 350px;
+    }
+
+    .display {
+      width: 100%;
+      height: 80px;
+      background: rgba(0, 0, 0, 0.1);
+      color: white;
+      font-size: 2rem;
+      text-align: right;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .btn.operator {
+      background: rgba(255, 87, 34, 0.7);
+    }
+
+    .btn.operator:hover {
+      background: rgba(255, 87, 34, 1);
+    }
+
+    .btn.equal {
+      background: #00c853;
+      grid-column: span 2;
+    }
+
+    .btn.equal:hover {
+      background: #00e676;
+    }
+
+    .btn.clear {
+      background: #d32f2f;
+    }
+
+    .btn.clear:hover {
+      background: #e53935;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div id="display" class="display">0</div>
+    <div class="buttons">
+      <button class="btn clear" onclick="clearDisplay()">C</button>
+      <button class="btn" onclick="appendInput('(')">(</button>
+      <button class="btn" onclick="appendInput(')')">)</button>
+      <button class="btn operator" onclick="appendInput('/')">÷</button>
+
+      <button class="btn" onclick="appendInput('7')">7</button>
+      <button class="btn" onclick="appendInput('8')">8</button>
+      <button class="btn" onclick="appendInput('9')">9</button>
+      <button class="btn operator" onclick="appendInput('*')">×</button>
+
+      <button class="btn" onclick="appendInput('4')">4</button>
+      <button class="btn" onclick="appendInput('5')">5</button>
+      <button class="btn" onclick="appendInput('6')">6</button>
+      <button class="btn operator" onclick="appendInput('-')">−</button>
+
+      <button class="btn" onclick="appendInput('1')">1</button>
+      <button class="btn" onclick="appendInput('2')">2</button>
+      <button class="btn" onclick="appendInput('3')">3</button>
+      <button class="btn operator" onclick="appendInput('+')">+</button>
+
+      <button class="btn" onclick="appendInput('0')">0</button>
+      <button class="btn" onclick="appendInput('.')">.</button>
+      <button class="btn equal" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+
+    function appendInput(value) {
+      if (display.innerText === '0') {
+        display.innerText = value;
+      } else {
+        display.innerText += value;
+      }
+    }
+
+    function clearDisplay() {
+      display.innerText = '0';
+    }
+
+    function calculate() {
+      try {
+        display.innerText = eval(display.innerText.replace(/÷/g, '/').replace(/×/g, '*'));
+      } catch {
+        display.innerText = 'Error';
+      }
+    }
+
+    // Optional: Keyboard support
+    document.addEventListener('keydown', (e) => {
+      if (e.key.match(/[0-9+\-*/().]/)) {
+        appendInput(e.key);
+      } else if (e.key === 'Enter') {
+        calculate();
+      } else if (e.key === 'Backspace') {
+        display.innerText = display.innerText.slice(0, -1) || '0';
+      } else if (e.key === 'c' || e.key === 'C') {
+        clearDisplay();
+      }
+    });
+  </script>
+</body>
+</html>
